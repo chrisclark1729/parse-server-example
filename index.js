@@ -7,15 +7,24 @@ var path = require('path');
 
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
+console.log('databaseUri = ' + databaseUri);
+
 if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
 }
 
+
+console.log('APP_ID = ' + process.env.APP_ID);
+console.log('SERVER_URL = ' + process.env.SERVER_URL);
+console.log('CLIENT_KEY = ' + process.env.CLIENT_KEY);
+
 var api = new ParseServer({
   databaseURI: databaseUri || 'mongodb://localhost:27017/dev',
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
-  appId: process.env.APP_ID || 'myAppId',
-  masterKey: process.env.MASTER_KEY || '', //Add your master key here. Keep it secret!
+  appId: process.env.APP_ID || 'G6Yn7q96WMpM9jPDPy4rpNZjKUn4TAuB36Dv49sX',
+  masterKey: process.env.MASTER_KEY || 'E5tUmHWDnyyTYiZIgwLzVQNWf42saAF0cxKhY2cH', //Add your master key here. Keep it secret!
+  fileKey: process.env.FILE_KEY || '337edf0c-aebb-47db-a75c-ed1e77a5f6ff', //Add your file key here. Keep it secret!
+  clientKey: process.env.CLIENT_KEY,
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
