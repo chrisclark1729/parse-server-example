@@ -17,6 +17,7 @@ if (!databaseUri) {
 console.log('APP_ID = ' + process.env.APP_ID);
 console.log('SERVER_URL = ' + process.env.SERVER_URL);
 console.log('CLIENT_KEY = ' + process.env.CLIENT_KEY);
+console.log('FILE_KEY = ' + process.env.FILE_KEY);
 
 var api = new ParseServer({
   databaseURI: databaseUri || 'mongodb://localhost:27017/dev',
